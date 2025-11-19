@@ -1,0 +1,201 @@
+{
+  "faq_sections": [
+    {
+      "category": "General",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is Mod Cellular?",
+          "answer": "Mod Cellular is a decentralized communication network that routes messages through WiFi, Bluetooth mesh, and satellite fallback instead of traditional cell towers. You can message anyone even in dead zones, and earn MODX tokens for relaying traffic.",
+          "short_answer": "Communication without carriers. Earn tokens for relaying messages."
+        },
+        {
+          "id": 2,
+          "question": "Does it work without cell service?",
+          "answer": "Yes. Mod Cellular scans for WiFi, Bluetooth devices, mesh nodes, and satellite signals. If one fails, it automatically switches to another. Messages deliver as long as ANY connection exists.",
+          "short_answer": "Yes — WiFi, Bluetooth mesh, and satellite fallback."
+        },
+        {
+          "id": 3,
+          "question": "Is it free?",
+          "answer": "Yes. The app is free to download and use. You can earn MODX tokens by relaying messages, which have real monetary value. Premium features (HD calls, priority routing) will be available as paid add-ons.",
+          "short_answer": "Yes. Free to use, earn tokens for relaying."
+        },
+        {
+          "id": 4,
+          "question": "What phones does it work on?",
+          "answer": "iOS 13+ and Android 8+. Built with React Native, so it runs on nearly all modern smartphones. We're exploring integration with feature phones and IoT devices for 2026.",
+          "short_answer": "iOS 13+ and Android 8+."
+        }
+      ]
+    },
+    {
+      "category": "Technology",
+      "questions": [
+        {
+          "id": 5,
+          "question": "How does message routing work?",
+          "answer": "The app scans for available connections (WiFi, Bluetooth, mesh, satellite). It scores each link based on strength, latency, and bandwidth, then selects the best route. Messages are split into 250-byte micro-packets and sent via multiple paths for redundancy.",
+          "short_answer": "Multi-protocol routing with automatic failover."
+        },
+        {
+          "id": 6,
+          "question": "Is it encrypted?",
+          "answer": "Yes. End-to-end encryption using Signal Protocol-inspired architecture. Only sender and recipient can decrypt messages. No metadata is stored on our servers.",
+          "short_answer": "Yes — end-to-end encrypted."
+        },
+        {
+          "id": 7,
+          "question": "What if I'm completely offline?",
+          "answer": "Messages stay in your device's DTN (Delay-Tolerant Networking) queue for up to 7 days. When you reconnect to ANY network, they're automatically sent. 94.7% of offline messages deliver within 24 hours.",
+          "short_answer": "Messages queue for 7 days, then send when reconnected."
+        },
+        {
+          "id": 8,
+          "question": "How fast are messages delivered?",
+          "answer": "Via WiFi: <1 second. Via Bluetooth mesh: 2-10 seconds. Via satellite: 15-60 seconds. DTN (offline queue): hours to days. Speed depends on available connections.",
+          "short_answer": "WiFi: instant. Mesh: seconds. Satellite: ~30s."
+        }
+      ]
+    },
+    {
+      "category": "MODX Tokens",
+      "questions": [
+        {
+          "id": 9,
+          "question": "What are MODX tokens?",
+          "answer": "MODX is an ERC-20 token used to reward users who relay messages. Think of it like mining Bitcoin, but for communication infrastructure. Total supply: 1 billion tokens.",
+          "short_answer": "Rewards for relaying messages. ERC-20, 1B supply."
+        },
+        {
+          "id": 10,
+          "question": "How do I earn MODX?",
+          "answer": "Your phone automatically earns tokens when it relays messages for other users. Rates: 0.05 MODX for mesh relay, 0.03 for micro-packet routing, 0.02 for DTN storage, 0.01 for fallback routing.",
+          "short_answer": "Relay messages = earn tokens. Fully automatic."
+        },
+        {
+          "id": 11,
+          "question": "How much can I earn?",
+          "answer": "It depends on your location and relay activity. Urban users with high traffic: $50-500/month. Rural users: $5-50/month. Top 1% of relayers: $1,000+/month.",
+          "short_answer": "Typically $50-500/month for active urban users."
+        },
+        {
+          "id": 12,
+          "question": "Can I sell MODX tokens?",
+          "answer": "Yes. MODX will be tradable on decentralized exchanges (Uniswap, etc.) after token launch. You can also use MODX to pay for premium features within the app.",
+          "short_answer": "Yes — trade on DEXs or use for premium features."
+        },
+        {
+          "id": 13,
+          "question": "Do I need crypto knowledge to use this?",
+          "answer": "No. The app auto-generates a wallet on first launch and handles all token operations in the background. You don't need to understand blockchain — you just see earnings in your wallet.",
+          "short_answer": "No — wallet is auto-created and managed."
+        }
+      ]
+    },
+    {
+      "category": "Privacy & Security",
+      "questions": [
+        {
+          "id": 14,
+          "question": "Can anyone read my messages?",
+          "answer": "No. Messages are end-to-end encrypted. Only the sender and recipient hold decryption keys. Not even Mod Cellular can read your messages.",
+          "short_answer": "No — only sender and recipient can decrypt."
+        },
+        {
+          "id": 15,
+          "question": "Do you store metadata?",
+          "answer": "Minimal. We store message delivery confirmations and relay counts for token distribution, but no message content or recipient identifiers. All stored data is encrypted.",
+          "short_answer": "Minimal — only relay confirmations, no content."
+        },
+        {
+          "id": 16,
+          "question": "Can the government intercept messages?",
+          "answer": "No. End-to-end encryption ensures government agencies cannot decrypt messages without the recipient's device. There are no backdoors.",
+          "short_answer": "No — no backdoors, no decryption keys."
+        },
+        {
+          "id": 17,
+          "question": "What data does the app collect?",
+          "answer": "Device ID (anonymous), relay activity (for token rewards), signal strength (for routing), and network stats (for performance). No location tracking, no contact scraping, no behavioral profiling.",
+          "short_answer": "Relay stats only — no location, contacts, or behavior."
+        }
+      ]
+    },
+    {
+      "category": "Use Cases",
+      "questions": [
+        {
+          "id": 18,
+          "question": "When would I use Mod Cellular?",
+          "answer": "Dead zones, natural disasters, protests, concerts, rural areas, international travel, privacy-critical communication, or anytime you want to earn passive income by relaying messages.",
+          "short_answer": "Dead zones, emergencies, travel, privacy, earning."
+        },
+        {
+          "id": 19,
+          "question": "Can I use it for voice calls?",
+          "answer": "Yes. Voice calls work via VOMP (Voice Over Micro-Packets) with adaptive quality. Group calls support up to 8 participants over Bluetooth mesh.",
+          "short_answer": "Yes — voice and group calls supported."
+        },
+        {
+          "id": 20,
+          "question": "Does it work for businesses?",
+          "answer": "Yes. Enterprise licensing available for corporate communication, emergency services, military deployments, and disaster recovery. Custom SLAs and priority routing included.",
+          "short_answer": "Yes — enterprise licensing available."
+        }
+      ]
+    },
+    {
+      "category": "Comparison",
+      "questions": [
+        {
+          "id": 21,
+          "question": "How is this different from WhatsApp or Signal?",
+          "answer": "WhatsApp and Signal require internet or cell service. Mod Cellular works via WiFi, Bluetooth mesh, and satellite — even in complete dead zones. Plus, you earn tokens for relaying messages.",
+          "short_answer": "Works without cell service. Earns you tokens."
+        },
+        {
+          "id": 22,
+          "question": "How is this different from Starlink?",
+          "answer": "Starlink requires a $500 satellite dish. Mod Cellular works on any smartphone using existing WiFi, Bluetooth, and opportunistic satellite signals. No hardware purchase required.",
+          "short_answer": "No hardware required. Works on any phone."
+        },
+        {
+          "id": 23,
+          "question": "How is this different from Helium?",
+          "answer": "Helium is for IoT device connectivity. Mod Cellular is for human communication (messaging, calls, stories). Both use the DePIN model, but we target the $1.6T telecom market instead of IoT.",
+          "short_answer": "Helium = IoT. Mod Cellular = communication."
+        }
+      ]
+    },
+    {
+      "category": "Launch & Roadmap",
+      "questions": [
+        {
+          "id": 24,
+          "question": "When does it launch?",
+          "answer": "Beta launch Q1 2026 (1,000 users). Public launch Q2 2026 (iOS App Store + Google Play). Token launch Q3 2026 (DEX listing).",
+          "short_answer": "Beta Q1 2026. Public Q2 2026."
+        },
+        {
+          "id": 25,
+          "question": "How do I get early access?",
+          "answer": "Join the waitlist at modcellular.network. We're onboarding users in waves based on location (prioritizing high-density cities first).",
+          "short_answer": "Join waitlist at modcellular.network."
+        },
+        {
+          "id": 26,
+          "question": "What's the long-term vision?",
+          "answer": "Replace traditional carriers entirely. Build a global peer-to-peer telecom network where users own the infrastructure and earn revenue. Expand to IoT, emergency services, and satellite integration.",
+          "short_answer": "Global P2P telecom network owned by users."
+        }
+      ]
+    }
+  ],
+  "faq_display_settings": {
+    "default_expanded": false,
+    "search_enabled": true,
+    "category_filters": true,
+    "show_related_questions": true
+  }
+}

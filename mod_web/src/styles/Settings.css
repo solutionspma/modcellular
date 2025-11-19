@@ -1,0 +1,136 @@
+.settings-container {
+  min-height: 100vh;
+  background: #000;
+  padding: 0 0 80px 0;
+}
+
+.settings-section {
+  padding: 20px;
+  border-bottom: 1px solid #222;
+}
+
+.settings-section h2 {
+  color: #00FF87;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-item label {
+  color: #888;
+  font-size: 0.95em;
+}
+
+.setting-value {
+  color: #fff;
+  font-weight: 500;
+}
+
+.link-button {
+  background: transparent;
+  color: #00FF87;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.2s;
+}
+
+.link-button:hover {
+  background: rgba(0, 255, 135, 0.1);
+}
+
+.link-button.important {
+  color: #FF3B30;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+#mesh-toggle {
+  display: none;
+}
+
+.toggle-label {
+  background: #333;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #888;
+}
+
+#mesh-toggle:checked + .toggle-label {
+  background: #00FF87;
+  color: #000;
+}
+
+.stats-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.stat {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-label {
+  color: #888;
+  font-size: 0.85em;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  color: #00FF87;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.info-box {
+  background: rgba(255, 59, 48, 0.1);
+  border: 1px solid #FF3B30;
+  border-radius: 8px;
+  padding: 12px;
+  color: #FF3B30;
+  font-size: 0.9em;
+  margin-top: 15px;
+}
+
+.logout-button {
+  margin: 20px;
+  width: calc(100% - 40px);
+  background: #FF3B30;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logout-button:hover {
+  background: #FF4D42;
+  transform: translateY(-2px);
+}

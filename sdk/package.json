@@ -1,0 +1,26 @@
+{
+  "name": "modcellular-sdk",
+  "version": "1.0.0",
+  "description": "SDK for integrating Mod Cellular into any application",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "modcellular",
+    "mesh-network",
+    "offline-first",
+    "communication",
+    "connectivity"
+  ],
+  "author": "Mod Cellular",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.70.0"
+  }
+}

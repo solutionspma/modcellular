@@ -1,0 +1,62 @@
+{
+  "expo": {
+    "name": "Mod Cellular",
+    "slug": "modcellular",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.modcellular.app",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "Mod Cellular uses Bluetooth to create mesh networks and find nearby devices",
+        "NSBluetoothPeripheralUsageDescription": "Mod Cellular uses Bluetooth to connect with nearby devices",
+        "NSLocationWhenInUseUsageDescription": "Mod Cellular uses location to find Wi-Fi networks",
+        "NSCameraUsageDescription": "Mod Cellular needs camera access for video calls and messages",
+        "NSMicrophoneUsageDescription": "Mod Cellular needs microphone access for calls and voice messages"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "package": "com.modcellular.app",
+      "permissions": [
+        "BLUETOOTH",
+        "BLUETOOTH_ADMIN",
+        "BLUETOOTH_CONNECT",
+        "BLUETOOTH_SCAN",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "CAMERA",
+        "RECORD_AUDIO",
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "ACCESS_WIFI_STATE",
+        "CHANGE_WIFI_STATE"
+      ]
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "scheme": "modcellular",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "71b94070-fd61-4a36-b995-8ef33c1ea9a1"
+      }
+    }
+  }
+}

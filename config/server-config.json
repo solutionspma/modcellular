@@ -1,0 +1,39 @@
+{
+  "server": {
+    "port": 3000,
+    "host": "0.0.0.0",
+    "protocol": "http"
+  },
+  "webrtc": {
+    "iceServers": [
+      {
+        "urls": "stun:stun.l.google.com:19302"
+      },
+      {
+        "urls": "turn:your-turn-server.com:3478",
+        "username": "username",
+        "credential": "password"
+      }
+    ]
+  },
+  "limits": {
+    "maxConnections": 10000,
+    "maxCallDuration": 28800,
+    "maxMessageSize": 10485760,
+    "rateLimit": {
+      "messages": 60,
+      "window": 60000
+    }
+  },
+  "mesh": {
+    "enabled": true,
+    "maxHops": 5,
+    "relayBandwidthLimit": 1000000
+  },
+  "dtn": {
+    "enabled": true,
+    "maxStorageMB": 50,
+    "messageTTLDays": 7,
+    "maxRetries": 10
+  }
+}

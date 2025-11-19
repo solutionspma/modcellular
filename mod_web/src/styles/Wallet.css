@@ -1,0 +1,195 @@
+.wallet-container {
+  min-height: 100vh;
+  background: #000;
+  padding: 0 0 80px 0;
+}
+
+.balance-card {
+  background: linear-gradient(135deg, #00FF87 0%, #00BFFF 100%);
+  padding: 40px 20px;
+  text-align: center;
+  color: #000;
+  margin: 0;
+}
+
+.balance-label {
+  font-size: 0.9em;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.balance-amount {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.balance-usd {
+  font-size: 1.2em;
+  opacity: 0.8;
+}
+
+.wallet-address {
+  background: #1a1a1a;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+.wallet-address label {
+  color: #888;
+  font-size: 0.9em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.address {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8em;
+  color: #00FF87;
+  word-break: break-all;
+  margin-bottom: 15px;
+}
+
+.wallet-address button {
+  width: 100%;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  padding: 20px;
+}
+
+.action-btn {
+  background: #1a1a1a;
+  border: 2px solid #333;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  border-color: #00FF87;
+  background: #222;
+  transform: translateY(-2px);
+}
+
+.transactions {
+  padding: 20px;
+}
+
+.transactions h2 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.empty {
+  color: #666;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.tx-type {
+  font-size: 1.5em;
+}
+
+.tx-details {
+  flex: 1;
+}
+
+.tx-description {
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.tx-date {
+  color: #666;
+  font-size: 0.85em;
+}
+
+.tx-amount {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.tx-amount.positive {
+  color: #00FF87;
+}
+
+.tx-amount.negative {
+  color: #FF3B30;
+}
+
+.earn-section {
+  padding: 20px;
+  background: #0a0a0a;
+  margin: 20px;
+  border-radius: 12px;
+  border: 2px solid #333;
+}
+
+.earn-section h3 {
+  color: #00FF87;
+  margin-bottom: 20px;
+}
+
+.earn-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+.earn-card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.earn-card:hover {
+  border-color: #00FF87;
+  transform: translateY(-4px);
+}
+
+.earn-icon {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.earn-title {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.earn-reward {
+  color: #00FF87;
+  font-size: 0.9em;
+}

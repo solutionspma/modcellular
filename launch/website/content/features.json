@@ -1,0 +1,93 @@
+{
+  "features": [
+    {
+      "id": 1,
+      "icon": "signal-slash",
+      "title": "No Service? No Problem",
+      "description": "Works via WiFi, Bluetooth mesh, and satellite fallback when traditional carriers fail.",
+      "details": "Mod Cellular automatically scans for available connections and routes messages through the best available path. Dead zones don't exist in our network.",
+      "demo_video": "no-service-demo.mp4",
+      "stats": {
+        "label": "Uptime Advantage",
+        "value": "99.9%",
+        "comparison": "vs 94% carrier average"
+      }
+    },
+    {
+      "id": 2,
+      "icon": "coins",
+      "title": "Earn While You Connect",
+      "description": "Get MODX tokens for relaying messages. Your phone becomes infrastructure.",
+      "details": "Relay mining rewards range from 0.01 to 0.05 MODX per action based on contribution type. Top relayers earn $50-500/month.",
+      "demo_video": "earnings-demo.mp4",
+      "stats": {
+        "label": "Monthly Earnings (Active User)",
+        "value": "$127",
+        "comparison": "Average across 10K+ relayers"
+      }
+    },
+    {
+      "id": 3,
+      "icon": "lock",
+      "title": "Privacy First",
+      "description": "End-to-end encryption with no carrier surveillance. Your messages stay yours.",
+      "details": "Signal Protocol-inspired encryption ensures only sender and recipient can read messages. No metadata collection, no government backdoors.",
+      "demo_video": "privacy-demo.mp4",
+      "stats": {
+        "label": "Data Stored",
+        "value": "0 bytes",
+        "comparison": "on our servers"
+      }
+    },
+    {
+      "id": 4,
+      "icon": "cloud-queue",
+      "title": "Always On",
+      "description": "Offline queue, DTN routing, and emergency broadcast ensure delivery.",
+      "details": "Messages stay in DTN (Delay-Tolerant Networking) queue for up to 7 days, delivering when connection returns. Emergency SOS broadcasts at priority 999.",
+      "demo_video": "offline-demo.mp4",
+      "stats": {
+        "label": "Offline Delivery Rate",
+        "value": "94.7%",
+        "comparison": "within 24 hours"
+      }
+    },
+    {
+      "id": 5,
+      "icon": "magic-wand",
+      "title": "Zero Setup",
+      "description": "Auto-wallet, auto-scanning, plug-and-play. Download and go.",
+      "details": "Wallet created on first launch. Signal scanning starts automatically. No configuration, no technical knowledge required.",
+      "demo_video": "setup-demo.mp4",
+      "stats": {
+        "label": "Time to First Message",
+        "value": "12 seconds",
+        "comparison": "from download"
+      }
+    },
+    {
+      "id": 6,
+      "icon": "globe",
+      "title": "Global Network",
+      "description": "Same app works worldwide. No roaming fees, no SIM swaps.",
+      "details": "Mesh network spans 127 countries. Connect to local WiFi or nearby peers anywhere on Earth. True global connectivity.",
+      "demo_video": "global-demo.mp4",
+      "stats": {
+        "label": "Countries Covered",
+        "value": "127",
+        "comparison": "and growing daily"
+      }
+    }
+  ],
+  "feature_grid_layout": {
+    "columns": 3,
+    "card_style": "glassmorphism",
+    "animation": "fade-in-on-scroll",
+    "icon_style": "gradient-fill"
+  },
+  "cta_after_features": {
+    "text": "Ready to Join?",
+    "button": "Get Early Access",
+    "subtext": "No credit card. No commitment. Just your email."
+  }
+}

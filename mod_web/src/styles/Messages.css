@@ -1,0 +1,118 @@
+.messages-container {
+  min-height: 100vh;
+  background: #000;
+  padding-bottom: 80px;
+}
+
+header {
+  background: #1a1a1a;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+header h1 {
+  font-size: 1.5em;
+  color: #00FF87;
+}
+
+header button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.chat-list {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.message-item {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+
+.message-item:hover {
+  border-color: #00FF87;
+  transform: translateY(-2px);
+}
+
+.message-content {
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.message-time {
+  color: #666;
+  font-size: 0.8em;
+}
+
+.message-input {
+  position: fixed;
+  bottom: 70px;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  border-top: 1px solid #333;
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.message-input input {
+  flex: 1;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px;
+  color: #fff;
+  font-size: 1em;
+}
+
+.message-input input:focus {
+  outline: none;
+  border-color: #00FF87;
+}
+
+.message-input button {
+  background: #00FF87;
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  border-top: 2px solid #00FF87;
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+}
+
+.bottom-nav a {
+  color: #888;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: all 0.2s;
+}
+
+.bottom-nav a:hover {
+  color: #00FF87;
+}
