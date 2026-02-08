@@ -1,7 +1,3 @@
-Here’s a clean, no-fluff README you can drop straight into GitHub. It’s practical, founder-level, and doesn’t oversell.
-
-⸻
-
 Mod Cellular
 
 Mod Cellular is a modular wireless experimentation stack for exploring modern mobile infrastructure. It combines eSIMs, carrier APIs, VoIP routing, data-aware mobile testing, and early mesh/private network concepts into a single learning and prototyping environment.
@@ -37,7 +33,3 @@ Status
 
 Active experimentation.
 Expect iteration, dead ends, and documentation that evolves with understanding.
-
-⸻
-
-If you want a shorter version, a more technical README, or one that hints at future monetization, say the word and I’ll tune it.
