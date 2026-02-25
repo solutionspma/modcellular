@@ -91,6 +91,20 @@ body {
   cursor: not-allowed;
 }
 
+.toggle-mode {
+  background: none;
+  border: none;
+  color: #00FF87;
+  font-size: 0.9em;
+  cursor: pointer;
+  padding: 10px 0;
+  margin-bottom: 15px;
+}
+
+.toggle-mode:hover {
+  text-decoration: underline;
+}
+
 .message {
   text-align: center;
   padding: 10px;

@@ -4,28 +4,27 @@ import '../styles/Login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
+  const [isSignUp, setIsSignUp] = useState(false);
 
-  const handleLogin = async () => {
+  const handleSubmit = async () => {
     setLoading(true);
     setMessage('');
-    
+
     try {
-      // Single app domain - always redirect to /messages on same origin
-      const redirectTo = `${window.location.origin}/messages`;
-      const { error } = await supabase.auth.signInWithOtp({ 
-        email,
-        options: { emailRedirectTo: redirectTo }
-      });
-      
-      if (error) {
-        setMessage(`Error: ${error.message}`);
+      if (isSignUp) {
+        const { error } = await supabase.auth.signUp({ email, password });
+        if (error) throw error;
+        setMessage('Account created. Sign in below.');
+        setIsSignUp(false);
       } else {
-        setMessage('Check your email for the magic link!');
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
       }
     } catch (err) {
-      setMessage(`Error: ${err.message}`);
+      setMessage(err.message || 'Error');
     } finally {
       setLoading(false);
     }
@@ -34,30 +33,45 @@ export default function Login() {
   return (
     <div className="login-container">
       <div className="login-card">
-        <h1>🌐 Mod Cellular</h1>
+        <h1>Mod Cellular</h1>
         <p className="tagline">Decentralized. Unstoppable. Yours.</p>
-        
+
         <div className="form">
-          <input 
+          <input
             type="email"
-            placeholder="Enter your email" 
-            value={email} 
+            placeholder="Email"
+            value={email}
             onChange={e => setEmail(e.target.value)}
-            onKeyPress={e => e.key === 'Enter' && handleLogin()}
             disabled={loading}
           />
-          <button onClick={handleLogin} disabled={loading || !email}>
-            {loading ? 'Sending...' : 'Send Magic Link'}
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            onKeyPress={e => e.key === 'Enter' && handleSubmit()}
+            disabled={loading}
+          />
+          <button onClick={handleSubmit} disabled={loading || !email || !password}>
+            {loading ? '...' : isSignUp ? 'Create account' : 'Sign in'}
           </button>
         </div>
-        
+
+        <button
+          type="button"
+          className="toggle-mode"
+          onClick={() => { setIsSignUp(!isSignUp); setMessage(''); }}
+        >
+          {isSignUp ? 'Already have an account? Sign in' : 'New? Create account'}
+        </button>
+
         {message && <p className="message">{message}</p>}
-        
+
         <div className="features">
-          <div className="feature">✅ Call Any Phone Number</div>
-          <div className="feature">✅ E2E Encrypted Messaging</div>
-          <div className="feature">✅ Mesh Network Relay</div>
-          <div className="feature">✅ MODX Token Wallet</div>
+          <div className="feature">Call Any Phone Number</div>
+          <div className="feature">E2E Encrypted Messaging</div>
+          <div className="feature">Mesh Network Relay</div>
+          <div className="feature">MODX Token Wallet</div>
         </div>
       </div>
     </div>
