@@ -8,7 +8,8 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "server": "node server/index.js",
-    "dev": "concurrently \"npm run start\" \"npm run server\""
+    "dev": "concurrently \"npm run start\" \"npm run server\"",
+    "supabase:auth-urls": "node supabase-auth-urls.js"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.11",
@@ -24,6 +25,7 @@
     "expo-av": "~14.0.0",
     "expo-camera": "~15.0.0",
     "expo-clipboard": "~6.0.0",
+    "expo-dev-client": "^6.0.18",
     "expo-file-system": "~17.0.0",
     "expo-image-manipulator": "~12.0.0",
     "expo-image-picker": "~15.0.0",

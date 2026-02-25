@@ -12,11 +12,11 @@ export default function Login() {
     setMessage('');
     
     try {
+      // Single app domain - always redirect to /messages on same origin
+      const redirectTo = `${window.location.origin}/messages`;
       const { error } = await supabase.auth.signInWithOtp({ 
         email,
-        options: {
-          emailRedirectTo: window.location.origin + '/messages'
-        }
+        options: { emailRedirectTo: redirectTo }
       });
       
       if (error) {
