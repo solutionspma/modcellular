@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  modcell:
+    image: node:20
+    container_name: modcell-control
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - /usr/bin/adb:/usr/bin/adb
+      - /dev/bus/usb:/dev/bus/usb
+    privileged: true
+    ports:
+      - "5050:5050"
+    environment:
+      - TELNYX_API_KEY=${TELNYX_API_KEY}
+      - ENABLE_APN_POLICY=${ENABLE_APN_POLICY:-false}
+      - APN_POLICY_TARGET=${APN_POLICY_TARGET:-wholesale}
+      - APN_POLICY_INTERVAL_MS=${APN_POLICY_INTERVAL_MS:-30000}
+    command: sh -c "npm install && node server.js"

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mod Cellular Control</title>
+<style>
+body{font-family:Arial;background:#111;color:#eee;padding:20px}
+button{margin:5px;padding:10px}
+pre{background:#222;padding:10px}
+</style>
+</head>
+<body>
+
+<h2>Mod Cellular Fleet Dashboard</h2>
+
+<button onclick="devices()">Detect Devices</button>
+<button onclick="info()">Device Info</button>
+<button onclick="radio()">Restart Radio</button>
+<button onclick="apn()">Push APN</button>
+<button onclick="sims()">Sync Telnyx SIMs</button>
+
+<pre id="out"></pre>
+
+<script>
+const out = document.getElementById("out")
+
+function devices(){
+fetch("/api/devices").then(r=>r.json()).then(d=>out.textContent=JSON.stringify(d,null,2))
+}
+
+function info(){
+fetch("/api/device/info").then(r=>r.json()).then(d=>out.textContent=JSON.stringify(d,null,2))
+}
+
+function radio(){
+fetch("/api/radio/restart",{method:"POST"}).then(r=>r.json()).then(d=>out.textContent=JSON.stringify(d,null,2))
+}
+
+function apn(){
+const apn = prompt("Enter APN:")
+fetch("/api/apn",{method:"POST",headers:{'Content-Type':'application/json'},body:JSON.stringify({apn})})
+.then(r=>r.json()).then(d=>out.textContent=JSON.stringify(d,null,2))
+}
+
+function sims(){
+fetch("/api/telnyx/sims").then(r=>r.json()).then(d=>out.textContent=JSON.stringify(d,null,2))
+}
+</script>
+
+</body>
+</html>

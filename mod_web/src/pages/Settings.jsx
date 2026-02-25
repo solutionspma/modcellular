@@ -157,6 +157,7 @@ export default function Settings() {
         <a href="/messages">💬 Messages</a>
         <a href="/dialer">📞 Dialer</a>
         <a href="/wallet">💰 Wallet</a>
+        <a href="/device-control">📱 Device</a>
         <a href="/settings">⚙️ Settings</a>
       </nav>
     </div>

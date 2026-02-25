@@ -1,0 +1,265 @@
+version: "3.9"
+
+networks:
+  modcell:
+    driver: bridge
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: modcell-mongo
+    networks: [modcell]
+    ports: ["27017:27017"]
+    volumes:
+      - ./core/mongo:/data/db
+
+  open5gs-webui:
+    image: open5gs/open5gs-webui:latest
+    container_name: modcell-open5gs-webui
+    networks: [modcell]
+    environment:
+      - DB_URI=mongodb://mongo/open5gs
+    depends_on: [mongo]
+    ports: ["9999:9999"]
+
+  open5gs-mme:
+    image: open5gs/open5gs:latest
+    container_name: modcell-mme
+    networks: [modcell]
+    command: ["mme"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    depends_on: [mongo]
+    ports: ["36412:36412"]
+
+  open5gs-hss:
+    image: open5gs/open5gs:latest
+    container_name: modcell-hss
+    networks: [modcell]
+    command: ["hss"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    depends_on: [mongo]
+
+  open5gs-sgwc:
+    image: open5gs/open5gs:latest
+    container_name: modcell-sgwc
+    networks: [modcell]
+    command: ["sgwc"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+
+  open5gs-sgwu:
+    image: open5gs/open5gs:latest
+    container_name: modcell-sgwu
+    networks: [modcell]
+    command: ["sgwu"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    cap_add: ["NET_ADMIN"]
+    sysctls:
+      - net.ipv4.ip_forward=1
+
+  open5gs-pgwc:
+    image: open5gs/open5gs:latest
+    container_name: modcell-pgwc
+    networks: [modcell]
+    command: ["pgwc"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+
+  open5gs-pgwu:
+    image: open5gs/open5gs:latest
+    container_name: modcell-pgwu
+    networks: [modcell]
+    command: ["pgwu"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    cap_add: ["NET_ADMIN"]
+    sysctls:
+      - net.ipv4.ip_forward=1
+
+  open5gs-nrf:
+    image: open5gs/open5gs:latest
+    container_name: modcell-nrf
+    networks: [modcell]
+    command: ["nrf"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    depends_on: [mongo]
+
+  open5gs-amf:
+    image: open5gs/open5gs:latest
+    container_name: modcell-amf
+    networks: [modcell]
+    command: ["amf"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    depends_on: [open5gs-nrf, mongo]
+    ports: ["38472:38472"]
+
+  open5gs-smf:
+    image: open5gs/open5gs:latest
+    container_name: modcell-smf
+    networks: [modcell]
+    command: ["smf"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    depends_on: [open5gs-nrf]
+
+  open5gs-upf:
+    image: open5gs/open5gs:latest
+    container_name: modcell-upf
+    networks: [modcell]
+    command: ["upf"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    cap_add: ["NET_ADMIN"]
+    sysctls:
+      - net.ipv4.ip_forward=1
+
+  open5gs-udr:
+    image: open5gs/open5gs:latest
+    container_name: modcell-udr
+    networks: [modcell]
+    command: ["udr"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    depends_on: [mongo]
+
+  open5gs-udm:
+    image: open5gs/open5gs:latest
+    container_name: modcell-udm
+    networks: [modcell]
+    command: ["udm"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    depends_on: [open5gs-nrf, mongo]
+
+  open5gs-ausf:
+    image: open5gs/open5gs:latest
+    container_name: modcell-ausf
+    networks: [modcell]
+    command: ["ausf"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    depends_on: [open5gs-nrf]
+
+  open5gs-pcf:
+    image: open5gs/open5gs:latest
+    container_name: modcell-pcf
+    networks: [modcell]
+    command: ["pcf"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    depends_on: [open5gs-nrf, mongo]
+
+  open5gs-nssf:
+    image: open5gs/open5gs:latest
+    container_name: modcell-nssf
+    networks: [modcell]
+    command: ["nssf"]
+    volumes:
+      - ./core/open5gs:/open5gs/config
+    depends_on: [open5gs-nrf]
+
+  provisioning-api:
+    image: node:20
+    container_name: modcell-provisioning
+    networks: [modcell]
+    working_dir: /app
+    volumes:
+      - ./provisioning:/app
+    environment:
+      - MONGO_URI=mongodb://mongo/open5gs
+      - PORT=7071
+    depends_on: [mongo]
+    ports: ["7071:7071"]
+    command: sh -c "npm install && node server.js"
+
+  mqtt:
+    image: eclipse-mosquitto:2
+    container_name: modcell-mqtt
+    networks: [modcell]
+    ports: ["1883:1883"]
+    volumes:
+      - ./telemetry/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+  loki:
+    image: grafana/loki:2.9.8
+    container_name: modcell-loki
+    networks: [modcell]
+    ports: ["3100:3100"]
+    command: -config.file=/etc/loki/local-config.yaml
+
+  prometheus:
+    image: prom/prometheus:v2.51.2
+    container_name: modcell-prometheus
+    networks: [modcell]
+    ports: ["9090:9090"]
+    volumes:
+      - ./telemetry/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: modcell-grafana
+    networks: [modcell]
+    ports: ["3000:3000"]
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on: [prometheus, loki]
+
+  telemetry-api:
+    image: node:20
+    container_name: modcell-telemetry-api
+    networks: [modcell]
+    working_dir: /app
+    volumes:
+      - ./telemetry:/app
+    environment:
+      - PORT=7072
+    ports: ["7072:7072"]
+    command: sh -c "npm install && node telemetry-api.js"
+
+  fleet-ui:
+    image: node:20
+    container_name: modcell-fleet-ui
+    networks: [modcell]
+    working_dir: /app
+    volumes:
+      - ./fleet:/app
+    environment:
+      - PORT=7073
+      - TELEMETRY_API=http://telemetry-api:7072
+      - PROVISIONING_API=http://provisioning-api:7071
+      - POLICY_API=http://policy-server:7074
+      - ESIM_API=http://esim-bridge:7075
+    ports: ["7073:7073"]
+    command: sh -c "npm install && node server.js"
+
+  policy-server:
+    image: node:20
+    container_name: modcell-policy
+    networks: [modcell]
+    working_dir: /app
+    volumes:
+      - ./policy:/app
+    environment:
+      - PORT=7074
+    ports: ["7074:7074"]
+    command: sh -c "npm install && node server.js"
+
+  esim-bridge:
+    image: node:20
+    container_name: modcell-esim
+    networks: [modcell]
+    working_dir: /app
+    volumes:
+      - ./esim:/app
+    environment:
+      - PORT=7075
+      - SMDP_BASE_URL=${SMDP_BASE_URL:-}
+      - SMDP_API_KEY=${SMDP_API_KEY:-}
+    ports: ["7075:7075"]
+    command: sh -c "npm install && node server.js"

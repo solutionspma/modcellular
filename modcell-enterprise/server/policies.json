@@ -1,0 +1,13 @@
+{
+  "apn": {
+    "name": "MODCELL",
+    "apn": "wholesale",
+    "mcc": "310",
+    "mnc": "410",
+    "type": "default,supl,ims"
+  },
+  "telemetry": {
+    "postUrl": "http://YOUR_SERVER_IP:7072/telemetry",
+    "intervalSec": 30
+  }
+}

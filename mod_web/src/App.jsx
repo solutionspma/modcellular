@@ -6,6 +6,7 @@ import Messages from './pages/Messages';
 import Dialer from './pages/Dialer';
 import Wallet from './pages/Wallet';
 import Settings from './pages/Settings';
+import DeviceControl from './pages/DeviceControl';
 
 function App() {
   const [session, setSession] = useState(null);
@@ -66,6 +67,10 @@ function App() {
         <Route 
           path="/settings" 
           element={session ? <Settings /> : <Navigate to="/" />} 
+        />
+        <Route 
+          path="/device-control" 
+          element={session ? <DeviceControl /> : <Navigate to="/" />} 
         />
       </Routes>
     </BrowserRouter>

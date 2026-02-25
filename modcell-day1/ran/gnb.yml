@@ -1,0 +1,38 @@
+# Mod Cellular — srsRAN 5 gNB config for Open5GS AMF
+# Set amf_addr to your Open5GS AMF IP (127.0.0.1 if same host)
+
+gnb_id: 1
+gnb_id_bit_length: 22
+ran_node_name: modcell_gnb
+
+amf:
+  addr: 127.0.0.1
+  port: 38472
+  sctp_rto_initial: 120
+  sctp_rto_min: 1000
+  sctp_rto_max: 5000
+  sctp_init_max_attempts: 3
+  sctp_max_init_timeo: 8000
+
+cu_cp:
+  inactivity_timer: 7200
+
+cu_up:
+  gtpu_reordering_timer: 0
+
+ru_sdr:
+  srate: 23.04
+  tx_gain: 80
+  rx_gain: 40
+  device_driver: zmq
+  device_args: tx_port=tcp://*:2000,rx_port=tcp://localhost:2001,id=gnb
+# For real SDR (e.g. B210):
+#  device_driver: uhd
+#  device_args: type=b200
+
+cell_cfg:
+  dl_arfcn: 632628
+  band: 78
+  channel_bandwidth_MHz: 20
+  nof_antennas_dl: 1
+  nof_antennas_ul: 1

@@ -1,0 +1,12 @@
+{
+  "name": "modcell-device-gateway",
+  "version": "1.0.0",
+  "description": "Mod Cellular device-control gateway for Mac Mini (ADB)",
+  "main": "modcell-device-gateway.js",
+  "scripts": {
+    "start": "node modcell-device-gateway.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}

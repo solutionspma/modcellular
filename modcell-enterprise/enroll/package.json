@@ -1,0 +1,6 @@
+{
+  "name": "modcell-qr-enroll",
+  "dependencies": {
+    "qrcode": "^1.5.3"
+  }
+}

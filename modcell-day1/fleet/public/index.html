@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Mod Cellular Fleet</title>
+  <style>
+    body{font-family:Arial;margin:20px;background:#101214;color:#e7e7e7}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .card{background:#171a1f;border:1px solid #2a2f3a;border-radius:14px;padding:14px;min-width:340px}
+    button{padding:10px 12px;border-radius:10px;border:0;background:#2b6cff;color:white;cursor:pointer}
+    input,textarea{width:100%;padding:10px;border-radius:10px;border:1px solid #2a2f3a;background:#0f1116;color:#e7e7e7}
+    pre{white-space:pre-wrap}
+  </style>
+</head>
+<body>
+  <h2>Mod Cellular — Enterprise Fleet</h2>
+  <div class="row">
+    <div class="card">
+      <h3>Fleet</h3>
+      <button onclick="loadFleet()">Refresh Fleet</button>
+      <pre id="fleet"></pre>
+    </div>
+    <div class="card">
+      <h3>Subscribers (Open5GS)</h3>
+      <button onclick="loadSubs()">Refresh Subscribers</button>
+      <pre id="subs"></pre>
+    </div>
+    <div class="card">
+      <h3>Create Subscriber</h3>
+      <p>IMSI / KEY / OPC (for your private core SIMs)</p>
+      <input id="imsi" placeholder="imsi e.g. 001010000000001"/>
+      <input id="key" placeholder="key (32 hex)"/>
+      <input id="opc" placeholder="opc (32 hex)"/>
+      <input id="apn" placeholder="apn (default: internet)"/>
+      <button onclick="createSub()">Create</button>
+      <pre id="subout"></pre>
+    </div>
+    <div class="card">
+      <h3>Carrier Profile Builder (Device Owner Policy)</h3>
+      <button onclick="loadPolicy()">Load Policy</button>
+      <textarea id="policy" rows="10"></textarea>
+      <button onclick="savePolicy()">Save Policy</button>
+      <pre id="policyout"></pre>
+    </div>
+    <div class="card">
+      <h3>eSIM Orders (Bridge)</h3>
+      <button onclick="loadOrders()">Load Orders</button>
+      <textarea id="order" rows="6" placeholder='{"customer":"X","deviceEid":"...","plan":"..."}'></textarea>
+      <button onclick="createOrder()">Create Order</button>
+      <pre id="orders"></pre>
+    </div>
+  </div>
+
+<script>
+async function loadFleet(){ document.getElementById("fleet").textContent = JSON.stringify(await (await fetch("/api/fleet")).json(),null,2) }
+async function loadSubs(){ document.getElementById("subs").textContent = JSON.stringify(await (await fetch("/api/subscribers")).json(),null,2) }
+async function createSub(){
+  const body = {
+    imsi: document.getElementById("imsi").value.trim(),
+    key: document.getElementById("key").value.trim(),
+    opc: document.getElementById("opc").value.trim(),
+    apn: document.getElementById("apn").value.trim() || "internet"
+  }
+  const r = await fetch("/api/subscribers",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})
+  document.getElementById("subout").textContent = JSON.stringify(await r.json(),null,2)
+}
+async function loadPolicy(){
+  const p = await (await fetch("/api/policy")).json()
+  document.getElementById("policy").value = JSON.stringify(p,null,2)
+}
+async function savePolicy(){
+  const body = JSON.parse(document.getElementById("policy").value)
+  document.getElementById("policyout").textContent = JSON.stringify(await (await fetch("/api/policy",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})).json(),null,2)
+}
+async function loadOrders(){
+  document.getElementById("orders").textContent = JSON.stringify(await (await fetch("/api/esim/orders")).json(),null,2)
+}
+async function createOrder(){
+  const body = JSON.parse(document.getElementById("order").value)
+  const r = await fetch("/api/esim/orders",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})
+  document.getElementById("orders").textContent = JSON.stringify(await r.json(),null,2)
+}
+</script>
+</body>
+</html>

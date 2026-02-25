@@ -1,0 +1,23 @@
+smf:
+  sbi:
+    - addr: 0.0.0.0
+      port: 7777
+  pfcp:
+    - addr: 0.0.0.0
+  gtpc:
+    - addr: 0.0.0.0
+  gtpu:
+    - addr: 0.0.0.0
+  session:
+    - name: internet
+      type: ipv4
+      apn: internet
+      subnet: 10.45.0.1/16
+      gateway: 10.45.0.1
+upf:
+  pfcp:
+    - addr: open5gs-upf
+nrf:
+  sbi:
+    - addr: open5gs-nrf
+      port: 7777

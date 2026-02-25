@@ -1,0 +1,5 @@
+upf:
+  pfcp:
+    - addr: 0.0.0.0
+  gtpu:
+    - addr: 0.0.0.0
