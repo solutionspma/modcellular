@@ -3,7 +3,16 @@
   command = "npm run build"
   publish = "dist"
 
+# SPA: serve index.html for all routes (including Supabase magic link /** path)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true
+
+# Catch Supabase redirect URLs with ** wildcard (literal path)
+[[redirects]]
+  from = "/*/*"
+  to = "/index.html"
+  status = 200
+  force = true

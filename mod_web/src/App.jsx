@@ -13,17 +13,20 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check for existing session
+    // Handle magic link / OAuth callback: Supabase reads hash fragment
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setLoading(false);
     });
 
-    // Listen for auth changes
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
+      // Clean URL after magic link (remove hash + weird path like /**)
+      if (session && window.location.hash) {
+        window.history.replaceState(null, '', '/messages');
+      }
     });
 
     return () => subscription.unsubscribe();
